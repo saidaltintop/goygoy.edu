@@ -25,14 +25,14 @@ class Lesson
     private $grades;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $personToLesson;
+
+    /**
      * @var \GoyGoyEdu\PortalBundle\Entity\Department
      */
     private $department;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $person;
 
     /**
      * Constructor
@@ -40,7 +40,7 @@ class Lesson
     public function __construct()
     {
         $this->grades = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->person = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->personToLesson = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -110,6 +110,39 @@ class Lesson
     }
 
     /**
+     * Add personToLesson
+     *
+     * @param \GoyGoyEdu\PortalBundle\Entity\PersonToLesson $personToLesson
+     * @return Lesson
+     */
+    public function addPersonToLesson(\GoyGoyEdu\PortalBundle\Entity\PersonToLesson $personToLesson)
+    {
+        $this->personToLesson[] = $personToLesson;
+
+        return $this;
+    }
+
+    /**
+     * Remove personToLesson
+     *
+     * @param \GoyGoyEdu\PortalBundle\Entity\PersonToLesson $personToLesson
+     */
+    public function removePersonToLesson(\GoyGoyEdu\PortalBundle\Entity\PersonToLesson $personToLesson)
+    {
+        $this->personToLesson->removeElement($personToLesson);
+    }
+
+    /**
+     * Get personToLesson
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPersonToLesson()
+    {
+        return $this->personToLesson;
+    }
+
+    /**
      * Set department
      *
      * @param \GoyGoyEdu\PortalBundle\Entity\Department $department
@@ -130,38 +163,5 @@ class Lesson
     public function getDepartment()
     {
         return $this->department;
-    }
-
-    /**
-     * Add person
-     *
-     * @param \GoyGoyEdu\PortalBundle\Entity\Person $person
-     * @return Lesson
-     */
-    public function addPerson(\GoyGoyEdu\PortalBundle\Entity\Person $person)
-    {
-        $this->person[] = $person;
-
-        return $this;
-    }
-
-    /**
-     * Remove person
-     *
-     * @param \GoyGoyEdu\PortalBundle\Entity\Person $person
-     */
-    public function removePerson(\GoyGoyEdu\PortalBundle\Entity\Person $person)
-    {
-        $this->person->removeElement($person);
-    }
-
-    /**
-     * Get person
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPerson()
-    {
-        return $this->person;
     }
 }

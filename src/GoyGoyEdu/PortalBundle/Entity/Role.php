@@ -22,14 +22,14 @@ class Role
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $person;
+    private $personHasRole;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->person = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->personHasRole = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -66,35 +66,35 @@ class Role
     }
 
     /**
-     * Add person
+     * Add personHasRole
      *
-     * @param \GoyGoyEdu\PortalBundle\Entity\Person $person
+     * @param \GoyGoyEdu\PortalBundle\Entity\PersonHasRole $personHasRole
      * @return Role
      */
-    public function addPerson(\GoyGoyEdu\PortalBundle\Entity\Person $person)
+    public function addPersonHasRole(\GoyGoyEdu\PortalBundle\Entity\PersonHasRole $personHasRole)
     {
-        $this->person[] = $person;
+        $this->personHasRole[] = $personHasRole;
 
         return $this;
     }
 
     /**
-     * Remove person
+     * Remove personHasRole
      *
-     * @param \GoyGoyEdu\PortalBundle\Entity\Person $person
+     * @param \GoyGoyEdu\PortalBundle\Entity\PersonHasRole $personHasRole
      */
-    public function removePerson(\GoyGoyEdu\PortalBundle\Entity\Person $person)
+    public function removePersonHasRole(\GoyGoyEdu\PortalBundle\Entity\PersonHasRole $personHasRole)
     {
-        $this->person->removeElement($person);
+        $this->personHasRole->removeElement($personHasRole);
     }
 
     /**
-     * Get person
+     * Get personHasRole
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPerson()
+    public function getPersonHasRole()
     {
-        return $this->person;
+        return $this->personHasRole;
     }
 }

@@ -14,6 +14,9 @@ GoyGoyEdu\PortalBundle\Entity\Lesson:
     grades:
       targetEntity: GoyGoyEdu\PortalBundle\Entity\Grades
       mappedBy: lesson
+    personToLesson:
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\PersonToLesson
+      mappedBy: lesson
   manyToOne:
     department:
       targetEntity: GoyGoyEdu\PortalBundle\Entity\Department
@@ -21,17 +24,3 @@ GoyGoyEdu\PortalBundle\Entity\Lesson:
       joinColumns:
         department_id:
           referencedColumnName: id
-  manyToMany:
-    person:
-      targetEntity: GoyGoyEdu\PortalBundle\Entity\Person
-      inversedBy: lesson
-      joinTable:
-        name: GoyGoyEdu\PortalBundle\Entity\PersonToLesson
-        joinColumns:
-          lesson_id:
-            referencedColumnName: id
-            nullable: false
-        inverseJoinColumns:
-          person_id:
-            referencedColumnName: id
-            nullable: false

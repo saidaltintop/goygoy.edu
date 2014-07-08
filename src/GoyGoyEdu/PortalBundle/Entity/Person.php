@@ -29,6 +29,42 @@ class Person
      */
     private $email;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $token;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $posts;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $grades;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $personToLesson;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $personHasRole;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->token = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->grades = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->personToLesson = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->personHasRole = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -107,42 +143,6 @@ class Person
     public function getEmail()
     {
         return $this->email;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $token;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $posts;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $grades;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $role;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $lesson;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->token = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->grades = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->role = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->lesson = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -245,68 +245,68 @@ class Person
     }
 
     /**
-     * Add role
+     * Add personToLesson
      *
-     * @param \GoyGoyEdu\PortalBundle\Entity\Role $role
+     * @param \GoyGoyEdu\PortalBundle\Entity\PersonToLesson $personToLesson
      * @return Person
      */
-    public function addRole(\GoyGoyEdu\PortalBundle\Entity\Role $role)
+    public function addPersonToLesson(\GoyGoyEdu\PortalBundle\Entity\PersonToLesson $personToLesson)
     {
-        $this->role[] = $role;
+        $this->personToLesson[] = $personToLesson;
 
         return $this;
     }
 
     /**
-     * Remove role
+     * Remove personToLesson
      *
-     * @param \GoyGoyEdu\PortalBundle\Entity\Role $role
+     * @param \GoyGoyEdu\PortalBundle\Entity\PersonToLesson $personToLesson
      */
-    public function removeRole(\GoyGoyEdu\PortalBundle\Entity\Role $role)
+    public function removePersonToLesson(\GoyGoyEdu\PortalBundle\Entity\PersonToLesson $personToLesson)
     {
-        $this->role->removeElement($role);
+        $this->personToLesson->removeElement($personToLesson);
     }
 
     /**
-     * Get role
+     * Get personToLesson
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getRole()
+    public function getPersonToLesson()
     {
-        return $this->role;
+        return $this->personToLesson;
     }
 
     /**
-     * Add lesson
+     * Add personHasRole
      *
-     * @param \GoyGoyEdu\PortalBundle\Entity\Lesson $lesson
+     * @param \GoyGoyEdu\PortalBundle\Entity\PersonHasRole $personHasRole
      * @return Person
      */
-    public function addLesson(\GoyGoyEdu\PortalBundle\Entity\Lesson $lesson)
+    public function addPersonHasRole(\GoyGoyEdu\PortalBundle\Entity\PersonHasRole $personHasRole)
     {
-        $this->lesson[] = $lesson;
+        $this->personHasRole[] = $personHasRole;
 
         return $this;
     }
 
     /**
-     * Remove lesson
+     * Remove personHasRole
      *
-     * @param \GoyGoyEdu\PortalBundle\Entity\Lesson $lesson
+     * @param \GoyGoyEdu\PortalBundle\Entity\PersonHasRole $personHasRole
      */
-    public function removeLesson(\GoyGoyEdu\PortalBundle\Entity\Lesson $lesson)
+    public function removePersonHasRole(\GoyGoyEdu\PortalBundle\Entity\PersonHasRole $personHasRole)
     {
-        $this->lesson->removeElement($lesson);
+        $this->personHasRole->removeElement($personHasRole);
     }
 
     /**
-     * Get lesson
+     * Get personHasRole
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getLesson()
+    public function getPersonHasRole()
     {
-        return $this->lesson;
+        return $this->personHasRole;
     }
 }

@@ -18,7 +18,7 @@ GoyGoyEdu\PortalBundle\Entity\Term:
       targetEntity: GoyGoyEdu\PortalBundle\Entity\Grades
       mappedBy: term
     personToLesson:
-      targetEntity: PersonToLesson
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\PersonToLesson
       mappedBy: term
   manyToOne:
     department:

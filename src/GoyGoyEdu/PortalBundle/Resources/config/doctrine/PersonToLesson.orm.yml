@@ -1,4 +1,4 @@
-GoyGoyEdu\PortalBundle\Entity\Grades:
+GoyGoyEdu\PortalBundle\Entity\PersonToLesson:
   type: entity
   fields:
     id:
@@ -6,26 +6,26 @@ GoyGoyEdu\PortalBundle\Entity\Grades:
       type: integer
       generator:
         strategy: AUTO
-    Grade:
+    type:
       type: integer
-      length: 20
-      nullable: true
+      length: 10
+      nullable: false
   manyToOne:
-    lesson:
-      targetEntity: GoyGoyEdu\PortalBundle\Entity\Lesson
-      inversedBy: grades
-      joinColumns:
-        lesson_id:
-          referencedColumnName: id
     term:
       targetEntity: GoyGoyEdu\PortalBundle\Entity\Term
-      inversedBy: grades
+      inversedBy: personToLesson
       joinColumns:
         term_id:
           referencedColumnName: id
     person:
       targetEntity: GoyGoyEdu\PortalBundle\Entity\Person
-      inversedBy: grades
+      inversedBy: personToLesson
       joinColumns:
         person_id:
+          referencedColumnName: id
+    lesson:
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Lesson
+      inversedBy: personToLesson
+      joinColumns:
+        lesson_id:
           referencedColumnName: id

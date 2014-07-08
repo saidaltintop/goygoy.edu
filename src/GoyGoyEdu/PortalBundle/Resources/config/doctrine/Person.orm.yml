@@ -29,10 +29,9 @@ GoyGoyEdu\PortalBundle\Entity\Person:
     grades:
       targetEntity: GoyGoyEdu\PortalBundle\Entity\Grades
       mappedBy: person
-  manyToMany:
-    role:
-      targetEntity: GoyGoyEdu\PortalBundle\Entity\Role
+    personToLesson:
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\PersonToLesson
       mappedBy: person
-    lesson:
-      targetEntity: GoyGoyEdu\PortalBundle\Entity\Lesson
+    personHasRole:
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\PersonHasRole
       mappedBy: person

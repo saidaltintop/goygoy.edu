@@ -11,17 +11,7 @@ GoyGoyEdu\PortalBundle\Entity\Role:
       type: string
       length: 255
       nullable: true
-  manyToMany:
-    person:
-      targetEntity: GoyGoyEdu\PortalBundle\Entity\Person
-      inversedBy: role
-      joinTable:
-        name: GoyGoyEdu\PortalBundle\Entity\PersonHasRole
-        joinColumns:
-          role_id:
-            referencedColumnName: id
-            nullable: false
-        inverseJoinColumns:
-          person_id:
-            referencedColumnName: id
-            nullable: false
+  oneToMany:
+    personHasRole:
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\PersonHasRole
+      mappedBy: role
