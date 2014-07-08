@@ -10,9 +10,8 @@ class PersonController extends Controller
 {
     public function loginAction(Request $request)
     {
-         $task = new Person();
-
-        $form = $this->createFormBuilder($task)
+        $task = new Person();
+        $form = $this->createFormBuilder($task,['csrf_protection' => false])
             ->add('email','email')
             ->add('password','password')
             ->add('submit','submit')
@@ -20,6 +19,8 @@ class PersonController extends Controller
          $form->handleRequest($request);
          if ($form->isValid()) {
             echo "test";
+            echo $task->getEmail();
+            echo $task->getPassword();
             //return $this->redirect($this->generateUrl('journal_show', array('id' => $entity->getId())));
         }
          return $this->render('GoyGoyEduPortalBundle:Person:new.html.twig', 
@@ -27,10 +28,8 @@ class PersonController extends Controller
     }
     public function newAction(Request $request)
     {
-        
         $task = new Person();
-
-        $form = $this->createFormBuilder($task)
+        $form = $this->createFormBuilder($task,['csrf_protection' => false])
             ->add('name')
             ->add('surname')
             ->add('email','email')
@@ -40,29 +39,12 @@ class PersonController extends Controller
          $form->handleRequest($request);
          if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($task);
             $em->flush();
             //return $this->redirect($this->generateUrl('journal_show', array('id' => $entity->getId())));
         }
 
        return $this->render('GoyGoyEduPortalBundle:Person:new.html.twig', 
                ["form" =>  $form->createView() ]);
-     /*$entity = new Person();
-     $form = new PersonType();
-     $data = $this->createFormBuilder($entity);
-     $form->buildForm($data,[]);
-     $form = $data->getForm();
-     $form->handleRequest($request);
-     if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-            //return $this->redirect($this->generateUrl('journal_show', array('id' => $entity->getId())));
-        }
-     
-       return $this->render('GoyGoyEduPortalBundle:Person:new.html.twig', 
-               ["form" =>  $form->createView() ]);*/
-        
-        //eturn $this->SignUpForm();
     }
 }
