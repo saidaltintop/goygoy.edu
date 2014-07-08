@@ -7,13 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use GoyGoyEdu\PortalBundle\Entity\Person;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class PersonController extends Controller
 {
-    public function indexAction($name)
-    {
-        return $this->render('GoyGoyEduPortalBundle:Default:index.html.twig', array('name' => $name));
-    }
-    public function homeAction(Request $request)
+    public function newAction(Request $request)
     {
      $entity = new Person();
      $form = new PersonType();
@@ -28,7 +24,7 @@ class DefaultController extends Controller
             //return $this->redirect($this->generateUrl('journal_show', array('id' => $entity->getId())));
         }
      
-       return $this->render('GoyGoyEduPortalBundle:Default:index.html.twig', 
+       return $this->render('GoyGoyEduPortalBundle:Person:new.html.twig', 
                ["form" =>  $form->createView() ]);
         
         //eturn $this->SignUpForm();
