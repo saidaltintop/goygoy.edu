@@ -19,6 +19,10 @@ GoyGoyEdu\PortalBundle\Entity\Person:
       type: string
       length: 255
       nullable: false
+    password:
+       type: string
+       length: 255
+       nullable: false
   oneToMany:
     token:
       targetEntity: GoyGoyEdu\PortalBundle\Entity\Token

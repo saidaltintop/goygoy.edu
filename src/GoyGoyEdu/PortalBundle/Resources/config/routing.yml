@@ -1,3 +1,6 @@
-person_index:
-    path:     /kayit
+person_new:
+    path:     /register
     defaults: { _controller: GoyGoyEduPortalBundle:Person:new }
+person_login:
+    path:     /login
+    defaults: { _controller: GoyGoyEduPortalBundle:Person:login }
