@@ -1,0 +1,40 @@
+GoyGoyEdu\PortalBundle\Entity\Person: 
+  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\PersonRepository
+Person:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: integer
+      length: 4
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      nullable: false
+    surname:
+      type: string
+      length: 255
+      nullable: false
+    email:
+      type: string
+      length: 255
+      nullable: false
+  oneToMany:
+    token:
+      targetEntity: Token
+      mappedBy: person
+    posts:
+      targetEntity: Posts
+      mappedBy: person
+    grades:
+      targetEntity: Grades
+      mappedBy: person
+  manyToMany:
+    role:
+      targetEntity: Role
+      mappedBy: person
+    lesson:
+      targetEntity: Lesson
+      mappedBy: person

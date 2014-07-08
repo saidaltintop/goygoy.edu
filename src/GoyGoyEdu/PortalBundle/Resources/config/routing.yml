@@ -1,0 +1,3 @@
+goy_goy_edu_portal_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: GoyGoyEduPortalBundle:Default:index }

@@ -1,0 +1,22 @@
+GoyGoyEdu\PortalBundle\Entity\Token: 
+  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\TokenRepository
+Token:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: integer
+      length: 10
+      generator:
+        strategy: AUTO
+    token:
+      type: string
+      length: 255
+      nullable: false
+  manyToOne:
+    person:
+      targetEntity: Person
+      inversedBy: token
+      joinColumns:
+        person_id:
+          referencedColumnName: id

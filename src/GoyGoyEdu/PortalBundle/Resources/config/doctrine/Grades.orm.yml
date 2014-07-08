@@ -1,0 +1,33 @@
+GoyGoyEdu\PortalBundle\Entity\Grades: 
+  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\GradesRepository
+Grades:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: integer
+      generator:
+        strategy: AUTO
+    Grade:
+      type: integer
+      length: 20
+      nullable: true
+  manyToOne:
+    lesson:
+      targetEntity: Lesson
+      inversedBy: grades
+      joinColumns:
+        lesson_id:
+          referencedColumnName: id
+    term:
+      targetEntity: Term
+      inversedBy: grades
+      joinColumns:
+        term_id:
+          referencedColumnName: id
+    person:
+      targetEntity: Person
+      inversedBy: grades
+      joinColumns:
+        person_id:
+          referencedColumnName: id

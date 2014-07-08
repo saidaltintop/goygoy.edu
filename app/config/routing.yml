@@ -1,0 +1,4 @@
+goy_goy_edu_portal:
+    resource: "@GoyGoyEduPortalBundle/Resources/config/routing.yml"
+    prefix:   /
+

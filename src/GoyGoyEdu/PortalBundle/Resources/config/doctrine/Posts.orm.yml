@@ -1,0 +1,31 @@
+GoyGoyEdu\PortalBundle\Entity\Post: 
+  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\PostRepository
+Posts:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: integer
+      length: 10
+      generator:
+        strategy: AUTO
+    title:
+      type: string
+      length: 255
+      nullable: false
+    text:
+      type: text
+      nullable: false
+    startdate:
+      type: datetime
+      nullable: false
+    enddate:
+      type: datetime
+      nullable: true
+  manyToOne:
+    person:
+      targetEntity: Person
+      inversedBy: posts
+      joinColumns:
+        person_id:
+          referencedColumnName: id

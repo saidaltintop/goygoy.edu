@@ -1,0 +1,29 @@
+GoyGoyEdu\PortalBundle\Entity\Role: 
+  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\RoleRepository
+Role:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: integer
+      length: 10
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      nullable: true
+  manyToMany:
+    person:
+      targetEntity: Person
+      inversedBy: role
+      joinTable:
+        name: PersonHasRole
+        joinColumns:
+          role_id:
+            referencedColumnName: id
+            nullable: false
+        inverseJoinColumns:
+          person_id:
+            referencedColumnName: id
+            nullable: false
