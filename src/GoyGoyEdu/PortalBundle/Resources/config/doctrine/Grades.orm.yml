@@ -1,6 +1,4 @@
-GoyGoyEdu\PortalBundle\Entity\Grades: 
-  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\GradesRepository
-Grades:
+GoyGoyEdu\PortalBundle\Entity\Grades:
   type: entity
   fields:
     id:
@@ -20,13 +18,13 @@ Grades:
         lesson_id:
           referencedColumnName: id
     term:
-      targetEntity: Term
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Term
       inversedBy: grades
       joinColumns:
         term_id:
           referencedColumnName: id
     person:
-      targetEntity: Person
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Person
       inversedBy: grades
       joinColumns:
         person_id:

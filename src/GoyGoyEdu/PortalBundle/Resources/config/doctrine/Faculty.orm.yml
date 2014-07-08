@@ -1,6 +1,4 @@
-GoyGoyEdu\PortalBundle\Entity\Faculty: 
-  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\FacultyRepository
-Faculty:
+GoyGoyEdu\PortalBundle\Entity\Faculty:
   type: entity
   fields:
     id:
@@ -14,5 +12,5 @@ Faculty:
       nullable: false
   oneToMany:
     department:
-      targetEntity: Department
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Department
       mappedBy: faculty

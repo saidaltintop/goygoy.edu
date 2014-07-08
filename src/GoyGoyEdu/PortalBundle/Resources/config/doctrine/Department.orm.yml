@@ -1,6 +1,4 @@
-GoyGoyEdu\PortalBundle\Entity\Department: 
-  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\DepartmentRepository
-Department:
+GoyGoyEdu\PortalBundle\Entity\Department:
   type: entity
   fields:
     id:
@@ -14,14 +12,14 @@ Department:
       nullable: false
   oneToMany:
     term:
-      targetEntity: Term
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Term
       mappedBy: department
     lesson:
-      targetEntity: Lesson
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Lesson
       mappedBy: department
   manyToOne:
     faculty:
-      targetEntity: Faculty
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Faculty
       inversedBy: department
       joinColumns:
         faculty_id:

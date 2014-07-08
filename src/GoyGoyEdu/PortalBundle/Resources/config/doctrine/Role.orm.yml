@@ -1,6 +1,4 @@
-GoyGoyEdu\PortalBundle\Entity\Role: 
-  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\RoleRepository
-Role:
+GoyGoyEdu\PortalBundle\Entity\Role:
   type: entity
   fields:
     id:
@@ -15,10 +13,10 @@ Role:
       nullable: true
   manyToMany:
     person:
-      targetEntity: Person
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Person
       inversedBy: role
       joinTable:
-        name: PersonHasRole
+        name: GoyGoyEdu\PortalBundle\Entity\PersonHasRole
         joinColumns:
           role_id:
             referencedColumnName: id

@@ -1,6 +1,4 @@
-GoyGoyEdu\PortalBundle\Entity\Token: 
-  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\TokenRepository
-Token:
+GoyGoyEdu\PortalBundle\Entity\Token:
   type: entity
   fields:
     id:
@@ -15,7 +13,7 @@ Token:
       nullable: false
   manyToOne:
     person:
-      targetEntity: Person
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Person
       inversedBy: token
       joinColumns:
         person_id:

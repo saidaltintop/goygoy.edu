@@ -1,6 +1,4 @@
-GoyGoyEdu\PortalBundle\Entity\Person: 
-  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\PersonRepository
-Person:
+GoyGoyEdu\PortalBundle\Entity\Person:
   type: entity
   fields:
     id:
@@ -23,18 +21,18 @@ Person:
       nullable: false
   oneToMany:
     token:
-      targetEntity: Token
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Token
       mappedBy: person
     posts:
-      targetEntity: Posts
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Posts
       mappedBy: person
     grades:
-      targetEntity: Grades
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Grades
       mappedBy: person
   manyToMany:
     role:
-      targetEntity: Role
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Role
       mappedBy: person
     lesson:
-      targetEntity: Lesson
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Lesson
       mappedBy: person

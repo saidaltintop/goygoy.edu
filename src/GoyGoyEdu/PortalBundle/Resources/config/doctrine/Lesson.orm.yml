@@ -1,6 +1,4 @@
-GoyGoyEdu\PortalBundle\Entity\Lesson: 
-  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\LessonRepository
-Lesson:
+GoyGoyEdu\PortalBundle\Entity\Lesson:
   type: entity
   fields:
     id:
@@ -14,21 +12,21 @@ Lesson:
       nullable: false
   oneToMany:
     grades:
-      targetEntity: Grades
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Grades
       mappedBy: lesson
   manyToOne:
     department:
-      targetEntity: Department
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Department
       inversedBy: lesson
       joinColumns:
         department_id:
           referencedColumnName: id
   manyToMany:
     person:
-      targetEntity: Person
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Person
       inversedBy: lesson
       joinTable:
-        name: PersonToLesson
+        name: GoyGoyEdu\PortalBundle\Entity\PersonToLesson
         joinColumns:
           lesson_id:
             referencedColumnName: id

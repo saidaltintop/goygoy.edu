@@ -1,6 +1,4 @@
-GoyGoyEdu\PortalBundle\Entity\Post: 
-  #repositoryClass: GoyGoyEdu\PortalBundle\Entity\PostRepository
-Posts:
+GoyGoyEdu\PortalBundle\Entity\Posts:
   type: entity
   fields:
     id:
@@ -24,7 +22,7 @@ Posts:
       nullable: true
   manyToOne:
     person:
-      targetEntity: Person
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Person
       inversedBy: posts
       joinColumns:
         person_id:
