@@ -1,6 +1,3 @@
-goy_goy_edu_portal_homepage:
-    path:     /hello/{name}
-    defaults: { _controller:  GoyGoyEduPortalBundle:Default:index }
 person_index:
-    path:     /
+    path:     /kayit
     defaults: { _controller: GoyGoyEduPortalBundle:Default:home }
