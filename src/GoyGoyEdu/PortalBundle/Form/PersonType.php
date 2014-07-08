@@ -18,8 +18,7 @@ class PersonType extends AbstractType
             ->add('name','text')
             ->add('surname','text')
             ->add('email','email')            
-            ->add('kaydet','submit')
-
+            ->add('Register','submit')
         ;
     }
     
