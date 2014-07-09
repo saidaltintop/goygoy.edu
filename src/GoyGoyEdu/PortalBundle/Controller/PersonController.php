@@ -16,7 +16,7 @@ class PersonController extends MySession
             ->add('password','password')
             ->add('submit','submit')
             ->getForm();
-        $repo = $this->getDoctrine()->getRepository('GoyGoyEduPortalBundle:Person');
+         $repo = $this->getDoctrine()->getRepository('GoyGoyEduPortalBundle:Person');
          $form->handleRequest($request);
          if ($form->isValid()) {
             $email = $task->getEmail();
@@ -25,13 +25,16 @@ class PersonController extends MySession
             $product = $repo->findOneBy(
                 array('email' => $email, 'password' => $pass)
             );
+           $this->destroy();
             if(!is_object($product))
             {
                 echo "login failed please recheck your inputs";
+               
             }
             else
             {
-                $this->session->set("id",$product->getId());
+                $this->register($product->getId());
+                echo "login success redirect";
             }
             // var_dump($product);
             //return $this->redirect($this->generateUrl('journal_show', array('id' => $entity->getId())));
@@ -54,7 +57,12 @@ class PersonController extends MySession
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();
+            $this->register($task->getId());
             //return $this->redirect($this->generateUrl('journal_show', array('id' => $entity->getId())));
+        }
+        else
+        {
+            echo "please check fields";
         }
 
        return $this->render('GoyGoyEduPortalBundle:Person:new.html.twig', 
