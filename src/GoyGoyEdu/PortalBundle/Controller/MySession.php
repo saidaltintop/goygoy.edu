@@ -15,13 +15,12 @@ class MySession extends Controller {
         $this->session = new Session();
         if($this->session->get("id"))
         {
-            echo "move along";
+            //echo "move along";
             //lets move on
         }
         else
         {
-            echo "login";
-            // redirect to login
+          // $this->redirect("login");
         }
     }
     function register($id) {
@@ -32,6 +31,17 @@ class MySession extends Controller {
         if($this->session->get("id"))
         {
             return $this->session->get("id");
+        }
+        else
+        {
+            return false;
+        }
+    }
+    function forceRedirect()
+    {
+         if($this->session->get("id"))
+        {
+            return $this->redirect("login");
         }
         else
         {

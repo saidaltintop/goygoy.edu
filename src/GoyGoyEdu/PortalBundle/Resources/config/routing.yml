@@ -4,3 +4,9 @@ person_new:
 person_login:
     path:     /login
     defaults: { _controller: GoyGoyEduPortalBundle:Person:login }
+portal_home:
+    path:  /posts
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:index }
+post_show:
+    path:  /posts/show/{id}
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:show }

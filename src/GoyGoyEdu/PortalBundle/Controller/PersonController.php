@@ -7,7 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PersonController extends MySession
 {
-    
+    public function getMyRoles($id) {
+        $task = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Person")->find($id);
+        return $task->password();
+    }
     public function loginAction(Request $request)
     {
         $task = new Person();
@@ -53,7 +56,7 @@ class PersonController extends MySession
             ->add('submit','submit')
             ->getForm();
          $form->handleRequest($request);
-         if ($form->isValid()) {
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();

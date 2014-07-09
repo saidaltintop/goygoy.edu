@@ -1,0 +1,34 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+{% block title %}Index{% endblock %}
+{% block body %}
+    <h3>Here Posts</h3>
+<table>
+	<tr>
+		<td>Id</td>
+		<td>Title</td>
+		<td>Start-End</td>
+		<td>Actions</td>
+	</tr>
+	{% for post in posts %}
+    <tr>
+		<td>{{post.id}}</td>
+        <td>{{post.title}}</td>
+		<td>
+			{{ post.Startdate|date('Y-m-d') }} / 
+			{% if post.Enddate is null %}
+				-
+			{% else %}
+				{{ post.Enddate|date('Y-m-d') }}
+		    {% endif %}
+    </td>
+		<td>
+			<a href="/posts/show/{{post.id}}" class="btn btn-info btn-sm">Show</a>
+			<a href="/posts/edit/{{post.id}}" class="btn btn-info btn-sm">Edit</a>
+			<a href="/posts/delete/{{post.id }}" class="btn btn-info btn-sm">Delete</a>
+		</td>
+	</tr>
+	{% endfor %}
+	
+</table>
+{% endblock %}
