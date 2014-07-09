@@ -9,5 +9,5 @@ Todo
 - Add post(done)
 + Show posts(Done)
 + Show specific post(Done)
-- Update post
+- Update post(Done)
 + Delete post(Done)

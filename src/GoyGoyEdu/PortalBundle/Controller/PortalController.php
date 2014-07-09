@@ -102,4 +102,46 @@ class PortalController extends MySession {
          return $this->render('GoyGoyEduPortalBundle:Portal:insert.html.twig', 
                ["form" =>  $form->createView()  ]);
     }
+    public function updateAction (Request $request,$id) {
+        if(!$this->isValid(2))
+        {
+            echo "no access";
+            return new \Symfony\Component\HttpFoundation\Response;
+        }
+        $task = $this->getPost($id);
+        $form = $this->createFormBuilder($task,['csrf_protection' => false])
+            ->add('title','text')
+            ->add('text','textarea')
+            ->add('startdate','date')
+            ->add('enddate','date');
+        if($task->getEnddate() == null)
+        {
+            $form  =   $form
+            ->add("endless", "checkbox", ["mapped" => false,"required"=> false , 
+                'attr'     => ['checked'   => 'checked']]);
+        }
+        else
+        {
+            $form= $form
+            ->add("endless", "checkbox", ["mapped" => false,"required"=> false]);
+        }
+        $form = $form
+            ->add('submit','submit')
+            ->getForm();
+         $form->handleRequest($request);
+         if($form->isValid())
+         {
+             if(isset($_POST["form"]["endless"]) &&  $_POST["form"]["endless"] == 1)
+             {
+                 $task->setEnddate(null);
+             }
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($task);
+             $em->flush();
+             return $this->redirect("/posts");
+            
+         }
+         return $this->render('GoyGoyEduPortalBundle:Portal:insert.html.twig', 
+               ["form" =>  $form->createView()  ]);
+    }
 }
