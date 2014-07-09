@@ -70,7 +70,36 @@ class PortalController extends MySession {
     public function deleteAction($id) {
          $this->deletePost($id);
          return $this->redirect("/posts");
-         
-        
+    }
+    function insertAction(Request $request) {
+        if(!$this->isValid(2))
+        {
+            echo "no access";
+            return new \Symfony\Component\HttpFoundation\Response;
+        }
+        $task = new \GoyGoyEdu\PortalBundle\Entity\Posts();
+        $form = $this->createFormBuilder($task,['csrf_protection' => false])
+            ->add('title','text')
+            ->add('text','textarea')
+            ->add('startdate','date')
+            ->add('enddate','date')
+            ->add("endless", "checkbox", ["mapped" => false,"required"=> false])
+            ->add('submit','submit')
+            ->getForm();
+         $form->handleRequest($request);
+         if($form->isValid())
+         {
+             if(isset($_POST["form"]["endless"]) &&  $_POST["form"]["endless"] == 1)
+             {
+                 $task->setEnddate(null);
+             }
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($task);
+             $em->flush();
+             return $this->redirect("/posts");
+            
+         }
+         return $this->render('GoyGoyEduPortalBundle:Portal:insert.html.twig', 
+               ["form" =>  $form->createView()  ]);
     }
 }

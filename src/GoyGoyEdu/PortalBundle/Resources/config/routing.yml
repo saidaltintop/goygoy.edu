@@ -13,3 +13,9 @@ post_show:
 post_delete:
     path:  /posts/delete/{id}
     defaults: { _controller: GoyGoyEduPortalBundle:Portal:delete }
+post_update:
+    path:  /posts/update/{id}
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:update }
+post_new:
+    path:  /posts/new
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:insert }

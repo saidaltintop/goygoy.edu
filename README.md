@@ -6,7 +6,7 @@ Todo
 =================================
 + Person Register(Done)
 + Person Login(Done)
-- Add post
+- Add post(done)
 + Show posts(Done)
 + Show specific post(Done)
 - Update post
