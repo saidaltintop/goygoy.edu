@@ -1,12 +1,12 @@
 <?php
 namespace GoyGoyEdu\PortalBundle\Controller;
+
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 /**
  * specified session class
  * @version 1.0b
  * @author kkanok
- * @access general all controllers
  */
 class MySession extends Controller {
     //put your code here
@@ -15,7 +15,7 @@ class MySession extends Controller {
         $this->session = new Session();
         if($this->session->get("id"))
         {
-            //echo "move along";
+            echo "move along";
             //lets move on
         }
         else

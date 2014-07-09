@@ -7,6 +7,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PersonController extends MySession
 {
+    public function __construct() {
+        parent::__construct();
+        $this->register(2);
+        
+    }
     public function getMyRoles($id) {
         $task = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Person")->find($id);
         return $task->password();
@@ -28,7 +33,7 @@ class PersonController extends MySession
             $product = $repo->findOneBy(
                 array('email' => $email, 'password' => $pass)
             );
-           $this->destroy();
+           //$this->destroy();
             if(!is_object($product))
             {
                 echo "login failed please recheck your inputs";
