@@ -11,3 +11,11 @@ Todo
 + Show specific post(Done)
 - Update post(Done)
 + Delete post(Done)
+SS
+-----------------------------------
++ Lesson Add/Delete
++ Lesson Add to the Term
++ Lesson Add to the Teacher
++ Lesson Add to the students
++ Enter midterm and term grades to lesson
++ Transcript
