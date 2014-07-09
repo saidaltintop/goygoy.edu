@@ -19,24 +19,24 @@ class PortalController extends MySession {
         }
         return $result;
     }
+    function isValid($id)
+    {
+        $test = new PersonController;
+        $myid = $test->status();
+        return in_array($id,$this->getRoles($myid));
+    }
     function getPosts()
     {
         return $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Posts")->findAll();
     }
     function indexAction(Request $request) {
-        $test = new PersonController();
-        $id = $test->status();
-        if($id)
+        if($this->isValid(1))
         {
-            $data = $this->getRoles($id);
-            //menas see page
-            if(in_array(1, $data))
-            {
                 $posts = $this->getPosts();
                 // echo "you can see posts";
                 return $this->render('GoyGoyEduPortalBundle:Portal:show.html.twig', 
                ["posts" =>  $posts  ]);
-            }
+            
         }
         return new \Symfony\Component\HttpFoundation\Response();
     }
@@ -46,7 +46,7 @@ class PortalController extends MySession {
     function showAction($id)
     {
         $data = $this->getPost($id);
-        if(is_object($data))
+        if(is_object($data) && $this->isValid(1))
         {
             return $this->render('GoyGoyEduPortalBundle:Portal:showone.html.twig', 
                ["post" =>  $data  ]);
@@ -58,10 +58,14 @@ class PortalController extends MySession {
         return new \Symfony\Component\HttpFoundation\Response();
     }
     function deletePost($id) {
-        $post = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Posts")->find($id);
-         $em = $this->getDoctrine()->getManager();
-         $em->remove($post);
-         $em->flush();
+        if($this->isValid(2))
+        {
+            $post = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Posts")->find($id);
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($post);
+            $em->flush();
+        }
+        
     }
     public function deleteAction($id) {
          $this->deletePost($id);
