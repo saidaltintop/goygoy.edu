@@ -10,3 +10,6 @@ portal_home:
 post_show:
     path:  /posts/show/{id}
     defaults: { _controller: GoyGoyEduPortalBundle:Portal:show }
+post_delete:
+    path:  /posts/delete/{id}
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:delete }

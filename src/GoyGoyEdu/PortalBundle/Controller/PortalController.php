@@ -1,11 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace GoyGoyEdu\PortalBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 /**
@@ -62,8 +55,18 @@ class PortalController extends MySession {
         {
             echo "not found";
         }
-        
         return new \Symfony\Component\HttpFoundation\Response();
-
+    }
+    function deletePost($id) {
+        $post = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Posts")->find($id);
+         $em = $this->getDoctrine()->getManager();
+         $em->remove($post);
+         $em->flush();
+    }
+    public function deleteAction($id) {
+         $this->deletePost($id);
+         return $this->redirect("/posts");
+         
+        
     }
 }

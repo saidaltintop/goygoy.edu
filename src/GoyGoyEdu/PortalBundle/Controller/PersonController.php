@@ -71,4 +71,6 @@ class PersonController extends MySession
        return $this->render('GoyGoyEduPortalBundle:Person:new.html.twig', 
                ["form" =>  $form->createView() ]);
     }
+    
+    
 }
