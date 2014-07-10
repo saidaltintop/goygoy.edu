@@ -14,5 +14,7 @@ SS
 + Transcript
 
 instalation
->$ php app/console generate:doctrine:entities --no-backup
->$ php app/console doctrine:schema:update --force
+> $ php app/console generate:doctrine:entities --no-backup
+
+
+> $ php app/console doctrine:schema:update --force
