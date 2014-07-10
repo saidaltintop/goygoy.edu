@@ -68,10 +68,6 @@ class PersonController extends MySession
             $this->register($task->getId());
             //return $this->redirect($this->generateUrl('journal_show', array('id' => $entity->getId())));
         }
-        else
-        {
-            echo "please check fields";
-        }
 
        return $this->render('GoyGoyEduPortalBundle:Person:new.html.twig', 
                ["form" =>  $form->createView() ]);

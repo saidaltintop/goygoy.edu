@@ -47,7 +47,7 @@ class PortalController extends MySession {
     {
         $data = $this->getPost($id);
         if(is_object($data) && $this->isValid(1))
-        {
+        {   
             return $this->render('GoyGoyEduPortalBundle:Portal:showone.html.twig', 
                ["post" =>  $data  ]);
         }
@@ -61,6 +61,10 @@ class PortalController extends MySession {
         if($this->isValid(2))
         {
             $post = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Posts")->find($id);
+            if(!is_object($post))
+            {
+                return ;
+            }
             $em = $this->getDoctrine()->getManager();
             $em->remove($post);
             $em->flush();
@@ -69,6 +73,7 @@ class PortalController extends MySession {
     }
     public function deleteAction($id) {
          $this->deletePost($id);
+         
          return $this->redirect("/posts");
     }
     function insertAction(Request $request) {
@@ -109,6 +114,11 @@ class PortalController extends MySession {
             return new \Symfony\Component\HttpFoundation\Response;
         }
         $task = $this->getPost($id);
+        if(!is_object($task))
+        {
+            echo "not found";
+            return new \Symfony\Component\HttpFoundation\Response();
+        }
         $form = $this->createFormBuilder($task,['csrf_protection' => false])
             ->add('title','text')
             ->add('text','textarea')

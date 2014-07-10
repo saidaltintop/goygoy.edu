@@ -15,7 +15,6 @@ class MySession extends Controller {
         $this->session = new Session();
         if($this->session->get("id"))
         {
-            echo "move along";
             //lets move on
         }
         else
