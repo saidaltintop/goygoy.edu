@@ -13,6 +13,14 @@ namespace GoyGoyEdu\PortalBundle\Controller;
  * @author kkanok
  */
 class LessonController extends Roles {
+    function getAction() {
+        if(!$this->isValid(6))
+        {
+            echo "no access";
+            return new \Symfony\Component\HttpFoundation\Response;
+        }
+        
+    }
     //put your code here
     function getFaculties()
     {

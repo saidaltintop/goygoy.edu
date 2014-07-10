@@ -31,3 +31,9 @@ lesson_new:
 lesson_new2:
     path:  /lessons/new
     defaults: { _controller: GoyGoyEduPortalBundle:Lesson:new }  
+lesson_get:
+    path:  /lessons/get
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:get }  
+logout:
+    path:  /logout
+    defaults: { _controller: GoyGoyEduPortalBundle:Person:logout }  

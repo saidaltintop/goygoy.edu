@@ -10,12 +10,26 @@ class PersonController extends MySession
     public function __construct() {
         parent::__construct();
         $this->register(2);
-        
     }
-    public function getMyRoles($id) {
-        $task = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Person")->find($id);
-        return $task->password();
+    function whoisme()
+    {
+        $id= $this->status();
+        var_dump($id);
+        if($id)
+        {
+            $me = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Person")->find($id);
+            if($me != null)
+            {
+                $string = $me->getName() . " " . $me->getSurname();
+                echo $string;
+            }
+        }
     }
+    function logoutAction() {
+         $this->destroy();
+        return $this->redirect("/login");
+    }
+    
     public function loginAction(Request $request)
     {
         $task = new Person();
