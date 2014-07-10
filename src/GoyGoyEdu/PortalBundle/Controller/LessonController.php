@@ -16,6 +16,21 @@ class LessonController extends Roles {
     private $tid = 13;
     private $did;
     private $pid;
+    function giveAction() {
+        if(!$this->isValid(6))
+        {
+            echo "no access";
+            return new \Symfony\Component\HttpFoundation\Response;
+        }
+    }
+    function myEucationLessons()
+    {
+         $me = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Person")->
+                find($this->status());
+         $mylessons = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:PersonToLesson")
+                ->findBy(["person"=>$me  , "term" => $this->tid , "type"=>1]);
+         var_dump($mylessons);
+    }
     function getMyLessons()
     {
         $this->pid = $this->status();

@@ -37,3 +37,6 @@ lesson_get:
 logout:
     path:  /logout
     defaults: { _controller: GoyGoyEduPortalBundle:Person:logout }  
+giveGrades:
+    path:  /lessons/grades
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:give }  
