@@ -13,12 +13,98 @@ namespace GoyGoyEdu\PortalBundle\Controller;
  * @author kkanok
  */
 class LessonController extends Roles {
+    private $tid = 13;
+    private $did;
+    private $pid;
+    function getMyLessons()
+    {
+        $this->pid = $this->status();
+        $me = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Person")->
+                find($this->status());
+        $term = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:PersonToTerm")->
+                findOneBy(
+                        ["person"=>$me,
+                         "term"=>$this->tid]);
+        $did =  $term->getTerm()->getDepartment()->getId();
+        $this->did = $did;
+        $department = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Department")->
+                find($did);
+        
+        $lessons = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:PersonToLesson")
+                ->findBy(["department"=>$department , "term" => $this->tid , "type"=>1]);//lessons for teacher
+        $result = [];
+        foreach ($lessons as $value) {
+            $result[] = (object)[
+                "id"=>$value->getLesson()->getId(),
+                "name"=>$value->getLesson()->getName(),
+                "credit"=> $value->getCredit(),
+                "teacher"=>$value->getPerson()->getName() . " ". $value->getPerson()->getSurname()
+                    ];
+            
+        }
+        return $result;
+        
+    }
+    function getAllLessons() {
+         $me = $this->getDoctrine()
+                        ->getRepository("GoyGoyEduPortalBundle:Person")
+                        ->find($this->pid);
+         $lessons = $this->getDoctrine()
+                        ->getRepository("GoyGoyEduPortalBundle:PersonToLesson")
+                        ->findBy(
+                                ["person"=>$me,
+                                 "type"=>0]
+                                );
+         return (count($lessons) > 0);
+    }
     function getAction() {
         if(!$this->isValid(6))
         {
             echo "no access";
             return new \Symfony\Component\HttpFoundation\Response;
         }
+        $lessons = $this->getMyLessons();
+        if($this->getAllLessons())
+        {
+           echo "already done";
+            return new \Symfony\Component\HttpFoundation\Response;
+            
+        }
+        if($_POST)
+        {
+            foreach ($_POST["lesson"] as $key => $value) {
+                $credit = 0;
+                foreach ($lessons as $val) {
+                    if($val->id == $value)
+                    {
+                        $credit = $val->credit;
+                    }
+                }
+                $ptrl = new \GoyGoyEdu\PortalBundle\Entity\PersonToLesson();
+                $ptrl->setPerson($this->getDoctrine()
+                        ->getRepository("GoyGoyEduPortalBundle:Person")
+                        ->find($this->pid));
+                $ptrl->setDepartment($this->getDoctrine()
+                        ->getRepository("GoyGoyEduPortalBundle:Department")
+                        ->find($this->did));
+                $ptrl->setTerm($this->getDoctrine()
+                        ->getRepository("GoyGoyEduPortalBundle:Term")
+                        ->find($this->tid));
+                $ptrl->setLesson($this->getDoctrine()
+                        ->getRepository("GoyGoyEduPortalBundle:Lesson")
+                        ->find($value));
+                $ptrl->setCredit($credit);
+                $ptrl->setType(0);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($ptrl);
+                $em->flush();
+                //var_dump($this->pid , $this->did , $this->tid , $credit);
+                
+            }
+        }
+        return $this->render('GoyGoyEduPortalBundle:Student:get.html.twig', 
+               ["lessons" =>  $lessons  ]);
+        
         
     }
     //put your code here

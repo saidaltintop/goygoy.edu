@@ -9,7 +9,8 @@ class PersonController extends MySession
 {
     public function __construct() {
         parent::__construct();
-        $this->register(2);
+        //$this->register(2);
+        $this->whoisme();
     }
     function whoisme()
     {
@@ -17,12 +18,13 @@ class PersonController extends MySession
         var_dump($id);
         if($id)
         {
-            $me = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Person")->find($id);
-            if($me != null)
+           /* $me = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Person")->find($id);
+            var_dump($me);
+            if(is_object($me))
             {
                 $string = $me->getName() . " " . $me->getSurname();
-                echo $string;
-            }
+                var_dump($string);
+            }*/
         }
     }
     function logoutAction() {

@@ -1,0 +1,34 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+{% block title %}Index{% endblock %}
+{% block body %}
+    <form action="#" method="post">
+    <table>
+        <tr>
+            <td>Ders Kod</td>
+            <td>Ders Ad</td>
+            <td>Dersi Veren</td>
+            <td>Kredi</td>
+            <td>Eylem</td>
+        </tr>
+        {%for lesson in lessons %}
+        <tr>
+            <td>{{lesson.id}}</td>
+            <td>{{lesson.name}}</td>
+            <td>{{lesson.teacher}}</td>
+            <td>{{lesson.credit}}</td>
+            <td><input type="checkbox" name="lesson[]" value="{{lesson.id}}" />   </td>
+        </tr>
+        {%endfor%}
+        
+    </table>
+        
+        <button type="submit">Save</button>
+   </form>
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+{% endblock %}
