@@ -53,6 +53,7 @@ class LessonController extends Roles {
             echo "no access";
             return new \Symfony\Component\HttpFoundation\Response;
         }
+        
     }
     function newAction(\Symfony\Component\HttpFoundation\Request $request,$key = 1) {
         if(!$this->isValid(3))

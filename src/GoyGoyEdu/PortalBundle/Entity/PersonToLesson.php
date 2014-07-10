@@ -164,4 +164,32 @@ class PersonToLesson
     {
         return $this->credit;
     }
+    /**
+     * @var \GoyGoyEdu\PortalBundle\Entity\Department
+     */
+    private $department;
+
+
+    /**
+     * Set department
+     *
+     * @param \GoyGoyEdu\PortalBundle\Entity\Department $department
+     * @return PersonToLesson
+     */
+    public function setDepartment(\GoyGoyEdu\PortalBundle\Entity\Department $department = null)
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * Get department
+     *
+     * @return \GoyGoyEdu\PortalBundle\Entity\Department 
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
 }

@@ -34,3 +34,10 @@ GoyGoyEdu\PortalBundle\Entity\PersonToLesson:
       joinColumns:
         lesson_id:
           referencedColumnName: id
+    department:
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Department
+      inversedBy: personToLesson
+      joinColumns:
+        department_id:
+          referencedColumnName: id
+          
