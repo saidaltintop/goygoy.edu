@@ -15,17 +15,18 @@ class PortalController extends MySession {
                 )->findBy(["person"=>$person]);
         $result = array();
         foreach ($roles as $value) {
-            $result[] = $value->getRole()->getId();
+            if($value->getRole() != null)
+                $result[] = $value->getRole()->getId();
         }
         return $result;
     }
-    function isValid($id)
+    public function isValid($id)
     {
         $test = new PersonController;
         $myid = $test->status();
         return in_array($id,$this->getRoles($myid));
     }
-    function getPosts()
+    public function getPosts()
     {
         return $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Posts")->findAll();
     }
