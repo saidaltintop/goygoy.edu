@@ -19,3 +19,9 @@ post_update:
 post_new:
     path:  /posts/new
     defaults: { _controller: GoyGoyEduPortalBundle:Portal:insert }
+lesson_new:
+    path:  /lessons/new/{key}
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:new }   
+lesson_new2:
+    path:  /lessons/new
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:new }  

@@ -67,7 +67,7 @@ class PersonController extends MySession
             $em->flush();
             $this->register($task->getId());
             //return $this->redirect($this->generateUrl('journal_show', array('id' => $entity->getId())));
-        }
+        }       
 
        return $this->render('GoyGoyEduPortalBundle:Person:new.html.twig', 
                ["form" =>  $form->createView() ]);
