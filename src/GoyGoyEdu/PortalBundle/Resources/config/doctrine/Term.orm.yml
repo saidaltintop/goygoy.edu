@@ -1,0 +1,29 @@
+GoyGoyEdu\PortalBundle\Entity\Term:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: integer
+      generator:
+        strategy: AUTO
+    Type:
+      type: integer
+      length: 10
+      nullable: false
+    Year:
+      type: date
+      nullable: false
+  oneToMany:
+    grades:
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Grades
+      mappedBy: term
+    personToLesson:
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\PersonToLesson
+      mappedBy: term
+  manyToOne:
+    department:
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Department
+      inversedBy: term
+      joinColumns:
+        department_id:
+          referencedColumnName: id

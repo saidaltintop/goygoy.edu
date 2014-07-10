@@ -1,0 +1,21 @@
+person_new:
+    path:     /register
+    defaults: { _controller: GoyGoyEduPortalBundle:Person:new }
+person_login:
+    path:     /login
+    defaults: { _controller: GoyGoyEduPortalBundle:Person:login }
+portal_home:
+    path:  /posts
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:index }
+post_show:
+    path:  /posts/show/{id}
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:show }
+post_delete:
+    path:  /posts/delete/{id}
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:delete }
+post_update:
+    path:  /posts/edit/{id}
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:update }
+post_new:
+    path:  /posts/new
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:insert }
