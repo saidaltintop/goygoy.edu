@@ -2,23 +2,29 @@
 {% extends "base.html.twig" %}
 {% block title %}Index{% endblock %}
 {% block body %}
-
+<form action="#" method="post">
     <table>
         <tr>
-            <td>Lcode</td>
-            <td>Lesson</td>
-            <td>Go</td>
+            <td>Scode</td>
+            <td>Student</td>
+            <td>Mid-Term Grade</td>
+            <td>Term Grade</td>
+
         </tr>
-        {%for lesson in lessons %}
+        {%for student in students %}
         <tr>
-            <td>{{lesson.id}}</td>
-            <td>{{lesson.name}}</td>
-            <td><a href="/lessons/grades/{{lesson.id}}">Go-></a> </td>
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td><input type="integer" name="student[mid]" /></td>
+            <td><input type="integer" name="student[term]" />
+                <input type="hidden" value="{{student.id}}" name="student[id]" /></td>
+{#            <td><a href="/lessons/grades/{{studen.id}}">Go-></a> </td>#}
         </tr>
         {%endfor%}
         
     </table>
-        
+        <button type="submit">Save</button>
+       </form> 
    
 
 {% endblock %}

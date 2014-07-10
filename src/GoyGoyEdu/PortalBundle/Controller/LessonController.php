@@ -16,8 +16,57 @@ class LessonController extends Roles {
     private $tid = 13;
     private $did;
     private $pid;
+    function check($id , $tid)
+    {
+         $lesson =  $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Lesson")
+                ->find($id);
+            $term =  $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Term")
+                ->find($tid);
+        $grades =  $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Grades")
+                ->findBy([
+                    "lesson"=>$lesson,
+                    "term"=>$term,
+                ]);
+       return (count($grades) > 0);
+    }
+    function givegradeAction($id, $tid) {
+        if(!$this->isValid(5))
+        {
+            echo "no access";
+            return new \Symfony\Component\HttpFoundation\Response;
+        }
+        if($this->check($id, $tid))
+        {
+            echo "alredy done";
+            return new \Symfony\Component\HttpFoundation\Response;
+        }
+        $students = $this->myStudents($id,$tid);
+        if($_POST)
+        {
+            $lesson =  $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Lesson")
+                ->find($id);
+            $term =  $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Term")
+                ->find($tid);
+            foreach ($_POST as $value) {
+                $student = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Person")
+                ->find($value["id"]);
+                $grade = new \GoyGoyEdu\PortalBundle\Entity\Grades();
+                $grade->setMidterm($value["mid"]);
+                $grade->setLesson($lesson);
+                $grade->setPerson($student);
+                $grade->setTerm($term);
+                $grade->setGrade($value["term"]);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($grade);
+                $em->flush();
+                echo "added";
+            }
+        }
+        return $this->render('GoyGoyEduPortalBundle:Student:grades.html.twig', 
+               ["students" =>  $students  ]);
+    }
     function giveAction() {
-        if(!$this->isValid(6))
+        if(!$this->isValid(5))
         {
             echo "no access";
             return new \Symfony\Component\HttpFoundation\Response;
@@ -27,6 +76,25 @@ class LessonController extends Roles {
          return $this->render('GoyGoyEduPortalBundle:Student:gradesall.html.twig', 
                ["lessons" =>  $data  ]);
     }
+    function myStudents($key,$tid)
+    {
+        $lesson = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Lesson")
+                ->find($key);
+        $term = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Term")
+                ->find($tid);
+        $mystudents = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:PersonToLesson")
+                ->findBy(["lesson"=>$lesson , "term" => $term, "type"=> 0]);
+        $result = [];
+        foreach ($mystudents as $value) {
+            $result[] = [
+                "id"=>$value->getPerson()->getId(),
+                "name"=>$value->getPerson()->getName() . " " .
+                $value->getPerson()->getSurname(),
+                    ];
+        }
+        return $result;
+         
+    }
     function myEducationLessons()
     {
          $me = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Person")->
@@ -35,7 +103,7 @@ class LessonController extends Roles {
                 ->findBy(["person"=>$me  , "term" => $this->tid , "type"=>1]);
          $result = [];
          foreach ($mylessons as $value) {
-             $result[] = ["id"=>$value->getLesson()->getId(),"name"=>$value->getLesson()->getName()];
+             $result[] = ["tid"=> $value->getTerm()->getId() , "id"=>$value->getLesson()->getId(),"name"=>$value->getLesson()->getName()];
          }
         return $result;
     }

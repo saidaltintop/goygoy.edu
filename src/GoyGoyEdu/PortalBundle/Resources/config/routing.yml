@@ -40,3 +40,6 @@ logout:
 giveGrades:
     path:  /lessons/grades
     defaults: { _controller: GoyGoyEduPortalBundle:Lesson:give }  
+giveGrade:
+    path:  /lessons/grades/{id}/{tid}
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:givegrade }  
