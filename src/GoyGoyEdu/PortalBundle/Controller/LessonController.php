@@ -22,14 +22,22 @@ class LessonController extends Roles {
             echo "no access";
             return new \Symfony\Component\HttpFoundation\Response;
         }
+        $data = $this->myEducationLessons();
+        
+         return $this->render('GoyGoyEduPortalBundle:Student:gradesall.html.twig', 
+               ["lessons" =>  $data  ]);
     }
-    function myEucationLessons()
+    function myEducationLessons()
     {
          $me = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Person")->
                 find($this->status());
          $mylessons = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:PersonToLesson")
                 ->findBy(["person"=>$me  , "term" => $this->tid , "type"=>1]);
-         var_dump($mylessons);
+         $result = [];
+         foreach ($mylessons as $value) {
+             $result[] = ["id"=>$value->getLesson()->getId(),"name"=>$value->getLesson()->getName()];
+         }
+        return $result;
     }
     function getMyLessons()
     {
