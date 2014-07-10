@@ -136,4 +136,32 @@ class PersonToLesson
     {
         return $this->lesson;
     }
+    /**
+     * @var integer
+     */
+    private $credit;
+
+
+    /**
+     * Set credit
+     *
+     * @param integer $credit
+     * @return PersonToLesson
+     */
+    public function setCredit($credit)
+    {
+        $this->credit = $credit;
+
+        return $this;
+    }
+
+    /**
+     * Get credit
+     *
+     * @return integer 
+     */
+    public function getCredit()
+    {
+        return $this->credit;
+    }
 }

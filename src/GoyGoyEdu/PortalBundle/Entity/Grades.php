@@ -136,4 +136,37 @@ class Grades
     {
         return $this->person;
     }
+    /**
+     * @var integer
+     */
+    private $Midterm;
+
+    /**
+     * @var integer
+     */
+    private $Term;
+
+
+    /**
+     * Set Midterm
+     *
+     * @param integer $midterm
+     * @return Grades
+     */
+    public function setMidterm($midterm)
+    {
+        $this->Midterm = $midterm;
+
+        return $this;
+    }
+
+    /**
+     * Get Midterm
+     *
+     * @return integer 
+     */
+    public function getMidterm()
+    {
+        return $this->Midterm;
+    }
 }

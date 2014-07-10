@@ -40,13 +40,19 @@ class LessonController extends Roles {
     }
     function  getDepartment($key)
     {
-
         $data = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Department")->find($key);
         if(is_object($data))
         {
             return $data;
         }
         return null;
+    }
+    function newtermAction(\Symfony\Component\HttpFoundation\Request $request , $key = 2) {
+        if(!$this->isValid(4))
+        {
+            echo "no access";
+            return new \Symfony\Component\HttpFoundation\Response;
+        }
     }
     function newAction(\Symfony\Component\HttpFoundation\Request $request,$key = 1) {
         if(!$this->isValid(3))
@@ -81,6 +87,5 @@ class LessonController extends Roles {
         }
         return $this->render('GoyGoyEduPortalBundle:Portal:insert.html.twig', 
                ["form" =>  $form->createView()  ]);
-        #code...
     }
 }

@@ -10,6 +10,11 @@ GoyGoyEdu\PortalBundle\Entity\PersonToLesson:
       type: integer
       length: 10
       nullable: false
+    credit:
+      type: integer
+      length: 10
+      nullable: false
+        
   manyToOne:
     term:
       targetEntity: GoyGoyEdu\PortalBundle\Entity\Term
