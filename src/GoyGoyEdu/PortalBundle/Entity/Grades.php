@@ -169,4 +169,32 @@ class Grades
     {
         return $this->Midterm;
     }
+    /**
+     * @var integer
+     */
+    private $Final;
+
+
+    /**
+     * Set Final
+     *
+     * @param integer $final
+     * @return Grades
+     */
+    public function setFinal($final)
+    {
+        $this->Final = $final;
+
+        return $this;
+    }
+
+    /**
+     * Get Final
+     *
+     * @return integer 
+     */
+    public function getFinal()
+    {
+        return $this->Final;
+    }
 }

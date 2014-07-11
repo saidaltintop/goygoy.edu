@@ -10,7 +10,7 @@ GoyGoyEdu\PortalBundle\Entity\Grades:
       type: integer
       length: 20
       nullable: true
-    Term:
+    Final:
       type: integer
       length: 20
       nullable: true

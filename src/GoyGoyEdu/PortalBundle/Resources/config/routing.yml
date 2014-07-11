@@ -43,3 +43,6 @@ giveGrades:
 giveGrade:
     path:  /lessons/grades/{id}/{tid}
     defaults: { _controller: GoyGoyEduPortalBundle:Lesson:givegrade }  
+transcript:
+    path:  /transcript
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:transcript }

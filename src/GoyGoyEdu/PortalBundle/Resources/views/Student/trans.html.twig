@@ -1,0 +1,36 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+{% block title %}Index{% endblock %}
+{% block body %}
+      <table>
+            <tr>
+                <td>Name</td>
+                <td>Credit</td>
+                <td>Grade</td>
+            </tr>
+        
+    {%for key, item in grades %}
+             <tr>
+                 <td><h3>{{key}}</h3></td>
+             </tr>
+            
+            
+        {%for it in item%}
+            <tr>
+                <td>{{it.name}}</td>
+                <td>{{it.credit}}</td>
+                <td>{{it.grade}}</td>
+            </tr>
+        {%endfor%}
+        
+        
+        
+    {%endfor%}
+</table>
+    <span>total:{{total}}</span>
+{% endblock %}
+
+{% block javascripts %}
+
+
+{% endblock %}

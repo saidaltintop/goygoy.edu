@@ -16,6 +16,57 @@ class LessonController extends Roles {
     private $tid = 13;
     private $did;
     private $pid;
+    function mygrades()
+    {
+       
+        $student  =  $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Person")
+                ->find($this->status());
+        $grades = $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Grades")
+                ->findBy([
+                    "person"=>$student
+                ]);
+        $restult = [];
+        foreach ($grades as $value) {
+            
+            $result[] = [
+                "name"=>$value->getLesson()->getName(),
+                "grade"=>$value->getMidTerm()* 0.4 + $value->getFinal()* 0.6,
+                "termid"=>$value->getTerm()->getId(),
+                "credit"=>$this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:PersonToLesson")
+                    ->findOneBy([
+                        "lesson"=>$value->getLesson(),
+                        "term"=>$value->getTerm()
+                    ])->getCredit(),
+                "termname"=>
+                ($value->getTerm()->getType() == 1) ? $value->getTerm()->getYear()
+                    ->format("Y") .  " Güz" :
+                $value->getTerm()->getYear()->format("Y") . " Bahar" 
+                    ];
+        }
+        $count = 0;
+        $total = 0;
+        $credits = 0;
+        foreach ($result as $key => $value) {
+            $total += $value["grade"] * $value["credit"];
+            $credits += $value["credit"];
+            $result[$value["termname"]][] = $value;
+            unset($result[$key]);
+            $count++;
+        }
+        $total /= $credits;
+        return [$total,$result];
+        
+    }
+    function transcriptAction() {
+        if(!$this->isValid(6))
+        {
+            echo "no access";
+            return new \Symfony\Component\HttpFoundation\Response;
+        }
+        $grades = $this->mygrades();
+        return $this->render('GoyGoyEduPortalBundle:Student:trans.html.twig', 
+               ["total" => $grades[0] , "grades" =>  $grades[1]  ]);
+    }
     function check($id , $tid)
     {
          $lesson =  $this ->getDoctrine() ->getRepository("GoyGoyEduPortalBundle:Lesson")
@@ -55,7 +106,7 @@ class LessonController extends Roles {
                 $grade->setLesson($lesson);
                 $grade->setPerson($student);
                 $grade->setTerm($term);
-                $grade->setGrade($value["term"]);
+                $grade->setFinal($value["term"]);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($grade);
                 $em->flush();
