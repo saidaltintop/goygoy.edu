@@ -13,6 +13,7 @@ class MySession extends Controller {
     private $session;
     public function __construct() {
         $this->session = new Session();
+        $this->register(2);
         if($this->session->get("id"))
         {
             //lets move on
