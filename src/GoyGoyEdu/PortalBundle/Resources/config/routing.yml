@@ -46,3 +46,9 @@ giveGrade:
 transcript:
     path:  /transcript
     defaults: { _controller: GoyGoyEduPortalBundle:Lesson:transcript }
+homepage:
+    path:  /
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:home }
+page:
+    path:  /{id}
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:showpage }

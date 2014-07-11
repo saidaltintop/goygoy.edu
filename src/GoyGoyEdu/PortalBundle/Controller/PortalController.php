@@ -1,5 +1,6 @@
 <?php
 namespace GoyGoyEdu\PortalBundle\Controller;
+use Doctrine\ORM\Query as Doctrine_Query;
 use Symfony\Component\HttpFoundation\Request;
 /**
  * Description of PortalController
@@ -26,10 +27,24 @@ class PortalController extends MySession {
         $myid = $test->status();
         return in_array($id,$this->getRoles($myid));
     }
+    public function  getSpecificPosts()
+    {
+       $data  = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Posts")->findAll();
+       
+       return $data;
+    }
+    public function homeAction()
+    {
+        $data = $this->getPosts();
+        return $this->render('GoyGoyEduPortalBundle:Portal:home.html.twig', 
+               ["posts" =>  $data  ]);
+    }
     public function getPosts()
     {
+        
         return $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Posts")->findAll();
     }
+    
     function indexAction(Request $request) {
         if($this->isValid(1))
         {
@@ -43,6 +58,20 @@ class PortalController extends MySession {
     }
     function getPost($id) {
         return $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Posts")->find($id);
+    }
+    function showPageAction($id)
+    {
+        $data = $this->getPost($id);
+        if(is_object($data) && $this->isValid(1))
+        {   
+            return $this->render('GoyGoyEduPortalBundle:Portal:homeone.html.twig', 
+               ["post" =>  $data  ]);
+        }
+        else
+        {
+            echo "not found";
+        }
+        return new \Symfony\Component\HttpFoundation\Response();
     }
     function showAction($id)
     {

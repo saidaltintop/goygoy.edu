@@ -1,0 +1,9 @@
+{# empty Twig template #}
+{% extends "portal.html.twig" %}
+{% block title %}Index{% endblock %}
+{% block body %}
+    <h4>{{post.title}}</h4>
+    <pre>{{ post.Startdate|date('Y-m-d') }} / {% if post.Enddate is null %}-{% else %}{{ post.Enddate|date('Y-m-d') }}{% endif %}</pre>
+    <p>{{post.text}}</p>
+
+{% endblock %}
