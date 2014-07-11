@@ -5,7 +5,7 @@ namespace GoyGoyEdu\PortalBundle\Controller;
 use GoyGoyEdu\PortalBundle\Entity\Person;
 use Symfony\Component\HttpFoundation\Request;
 
-class PersonController extends MySession
+class PersonController extends Roles
 {
     public function __construct() {
         parent::__construct();
@@ -15,17 +15,16 @@ class PersonController extends MySession
     function whoisme()
     {
         $id= $this->status();
-        var_dump($id);
-        if($id)
+       /* if($id)
         {
-           /* $me = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Person")->find($id);
+           $me = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Person")->find($id);
             var_dump($me);
             if(is_object($me))
             {
                 $string = $me->getName() . " " . $me->getSurname();
                 var_dump($string);
-            }*/
-        }
+            }
+        }*/
     }
     function logoutAction() {
          $this->destroy();
