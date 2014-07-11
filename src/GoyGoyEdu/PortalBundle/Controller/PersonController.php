@@ -5,17 +5,32 @@ namespace GoyGoyEdu\PortalBundle\Controller;
 use GoyGoyEdu\PortalBundle\Entity\Person;
 use Symfony\Component\HttpFoundation\Request;
 
-class PersonController extends MySession
+class PersonController extends Roles
 {
     public function __construct() {
         parent::__construct();
-        $this->register(2);
-        
+        //$this->register(2);
+        $this->whoisme();
     }
-    public function getMyRoles($id) {
-        $task = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Person")->find($id);
-        return $task->password();
+    function whoisme()
+    {
+        $id= $this->status();
+       /* if($id)
+        {
+           $me = $this->getDoctrine()->getRepository("GoyGoyEduPortalBundle:Person")->find($id);
+            var_dump($me);
+            if(is_object($me))
+            {
+                $string = $me->getName() . " " . $me->getSurname();
+                var_dump($string);
+            }
+        }*/
     }
+    function logoutAction() {
+         $this->destroy();
+        return $this->redirect("/login");
+    }
+    
     public function loginAction(Request $request)
     {
         $task = new Person();

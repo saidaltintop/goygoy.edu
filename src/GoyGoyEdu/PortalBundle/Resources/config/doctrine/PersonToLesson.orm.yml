@@ -10,6 +10,11 @@ GoyGoyEdu\PortalBundle\Entity\PersonToLesson:
       type: integer
       length: 10
       nullable: false
+    credit:
+      type: integer
+      length: 10
+      nullable: false
+        
   manyToOne:
     term:
       targetEntity: GoyGoyEdu\PortalBundle\Entity\Term
@@ -29,3 +34,10 @@ GoyGoyEdu\PortalBundle\Entity\PersonToLesson:
       joinColumns:
         lesson_id:
           referencedColumnName: id
+    department:
+      targetEntity: GoyGoyEdu\PortalBundle\Entity\Department
+      inversedBy: personToLesson
+      joinColumns:
+        department_id:
+          referencedColumnName: id
+          

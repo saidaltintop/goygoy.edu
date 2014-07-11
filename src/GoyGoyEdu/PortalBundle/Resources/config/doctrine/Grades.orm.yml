@@ -6,7 +6,11 @@ GoyGoyEdu\PortalBundle\Entity\Grades:
       type: integer
       generator:
         strategy: AUTO
-    Grade:
+    Midterm:
+      type: integer
+      length: 20
+      nullable: true
+    Final:
       type: integer
       length: 20
       nullable: true

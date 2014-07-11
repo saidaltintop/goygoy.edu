@@ -19,9 +19,36 @@ post_update:
 post_new:
     path:  /posts/new
     defaults: { _controller: GoyGoyEduPortalBundle:Portal:insert }
+lesson_new_term:
+    path:  /lessons/new/term
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:newterm } 
+lesson_new_term2:
+    path:  /lessons/new/term/{key}
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:newterm } 
 lesson_new:
     path:  /lessons/new/{key}
     defaults: { _controller: GoyGoyEduPortalBundle:Lesson:new }   
 lesson_new2:
     path:  /lessons/new
     defaults: { _controller: GoyGoyEduPortalBundle:Lesson:new }  
+lesson_get:
+    path:  /lessons/get
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:get }  
+logout:
+    path:  /logout
+    defaults: { _controller: GoyGoyEduPortalBundle:Person:logout }  
+giveGrades:
+    path:  /lessons/grades
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:give }  
+giveGrade:
+    path:  /lessons/grades/{id}/{tid}
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:givegrade }  
+transcript:
+    path:  /transcript
+    defaults: { _controller: GoyGoyEduPortalBundle:Lesson:transcript }
+homepage:
+    path:  /
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:home }
+page:
+    path:  /{id}
+    defaults: { _controller: GoyGoyEduPortalBundle:Portal:showpage }

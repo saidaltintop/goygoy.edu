@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
+<head profile="http://gmpg.org/xfn/11">
+<title>School Education</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="imagetoolbar" content="no" />
+        {% block stylesheets %}{% endblock %}
+{%stylesheets
+        '@GoyGoyEduPortalBundle/Resources/public/styles/layout.css'
+        '@GoyGoyEduPortalBundle/Resources/public/styles/navi.css'
+        '@GoyGoyEduPortalBundle/Resources/public/styles/forms.css'
+        '@GoyGoyEduPortalBundle/Resources/public/styles/tables.css'
+        '@GoyGoyEduPortalBundle/Resources/public/styles/featured_slide.css'
+        '@GoyGoyEduPortalBundle/Resources/public/styles/loginslider.css'
+
+        %}
+  <link rel="stylesheet" href="{{ asset_url }}" />
+    {%endstylesheets%}
+
+
+{% javascripts
+    '@GoyGoyEduPortalBundle/Resources/public/scripts/jquery-1.4.1.min.js'
+    '@GoyGoyEduPortalBundle/Resources/public/scripts/jquery.slidepanel.setup.js'
+    '@GoyGoyEduPortalBundle/Resources/public/scripts/jquery.slidepanel.setup.js'
+    '@GoyGoyEduPortalBundle/Resources/public/scripts/jquery.cycle.min.js'
+    '@GoyGoyEduPortalBundle/Resources/public/scripts/jquery.cycle.setup.js'
+
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+</head>
+<body>
+
+<!-- ####################################################################################################### -->
+<div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="/">GoyGoyEdu</a></h1>
+      <p>What an Education!</p>
+    </div>
+
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+
+<!-- ####################################################################################################### -->
+<div class="wrapper col3">
+  <div id="homecontent">
+    <div class="fl_left">
+      <div class="column2">
+        <ul>
+           {% block body %}{% endblock %}
+          
+        </ul>
+        <br class="clear" />
+      </div>
+
+    </div>
+
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col4">
+  <div id="footer">
+    <div class="footbox">
+      <h2>Lacus interdum</h2>
+      <ul>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li class="last"><a href="#">Praesent et eros</a></li>
+      </ul>
+    </div>
+    <div class="footbox">
+      <h2>Lacus interdum</h2>
+      <ul>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li class="last"><a href="#">Praesent et eros</a></li>
+      </ul>
+    </div>
+    <div class="footbox">
+      <h2>Lacus interdum</h2>
+      <ul>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li class="last"><a href="#">Praesent et eros</a></li>
+      </ul>
+    </div>
+    <div class="footbox">
+      <h2>Lacus interdum</h2>
+      <ul>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li class="last"><a href="#">Praesent et eros</a></li>
+      </ul>
+    </div>
+    <div class="footbox last">
+      <h2>Lacus interdum</h2>
+      <ul>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li class="last"><a href="#">Praesent et eros</a></li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col5">
+  <div id="copyright">
+    <p class="fl_left">Copyright &copy; 2011 - All Rights Reserved - <a href="#">Domain Name</a></p>
+    <p class="fl_right">Template by <a href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <br class="clear" />
+  </div>
+
+</div>
+</body>
+</html>

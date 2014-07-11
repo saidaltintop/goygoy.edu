@@ -1,14 +1,9 @@
 GoyGoyEdu
 ================================
 A PoC University system with symfony 2
+Note: this project is under-development
 
+instalation
+> $ php app/console generate:doctrine:entities GoyGoyEduPortalBundle --no-backup
 
-
-SS
------------------------------------
-+ Lesson Add/Delete
-+ Lesson Add to the Term
-+ Lesson Add to the Teacher
-+ Lesson Add to the students
-+ Enter midterm and term grades to lesson
-+ Transcript
+> $ php app/console doctrine:schema:update --force

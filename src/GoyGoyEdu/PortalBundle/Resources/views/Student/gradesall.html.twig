@@ -1,0 +1,29 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+{% block title %}Index{% endblock %}
+{% block body %}
+
+    <table>
+        <tr>
+            <td>Lcode</td>
+            <td>Lesson</td>
+            <td>Go</td>
+        </tr>
+        {%for lesson in lessons %}
+        <tr>
+            <td>{{lesson.id}}</td>
+            <td>{{lesson.name}}</td>
+            <td><a href="/lessons/grades/{{lesson.id}}/{{lesson.tid}}">Go-></a> </td>
+        </tr>
+        {%endfor%}
+        
+    </table>
+        
+   
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+{% endblock %}
