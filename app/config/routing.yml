@@ -1,3 +1,7 @@
+auth:
+    resource: "@AuthBundle/Resources/config/routing.yml"
+    prefix:   /
+
 goy_goy_edu_portal:
     resource: "@GoyGoyEduPortalBundle/Resources/config/routing.yml"
     prefix:   /
