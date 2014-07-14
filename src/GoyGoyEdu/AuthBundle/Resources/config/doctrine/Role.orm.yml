@@ -1,0 +1,22 @@
+GoyGoyEdu\AuthBundle\Entity\Role:
+    type: entity
+    table: Role
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: Id
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            column: Name
+    lifecycleCallbacks: {  }

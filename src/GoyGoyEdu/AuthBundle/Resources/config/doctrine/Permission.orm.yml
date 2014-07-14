@@ -1,0 +1,21 @@
+GoyGoyEdu\AuthBundle\Entity\Permission:
+    type: entity
+    table: Permission
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        description:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            column: Description
+    lifecycleCallbacks: {  }

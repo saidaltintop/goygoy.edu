@@ -1,0 +1,75 @@
+GoyGoyEdu\AuthBundle\Entity\Person:
+    type: entity
+    table: Person
+    indexes:
+        Role_ID:
+            columns:
+                - Role_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: Id
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            column: Name
+        surname:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            column: Surname
+        mothername:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            column: MotherName
+        fathername:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            column: FatherName
+        govermentid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: GovermentId
+        mothersecurityid:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: MotherSecurityId
+        fathersecurityid:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: FatherSecurityId
+    manyToOne:
+        role:
+            targetEntity: Role
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Role_ID:
+                    referencedColumnName: Id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

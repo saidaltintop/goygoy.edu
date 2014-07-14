@@ -1,0 +1,40 @@
+GoyGoyEdu\AuthBundle\Entity\RolePermission:
+    type: entity
+    table: Role_Permission
+    indexes:
+        RoleId:
+            columns:
+                - Role_Id
+        PermissionId:
+            columns:
+                - Permission_Id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: Id
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        role:
+            targetEntity: Role
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Role_Id:
+                    referencedColumnName: Id
+            orphanRemoval: false
+        permission:
+            targetEntity: Permission
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Permission_Id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
