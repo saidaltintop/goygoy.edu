@@ -20,7 +20,14 @@ class AuthController extends Controller
         }
         throw new role;
     }
+    private function getPerson($securityid)
+    {
+        $data = $this->getDoctrine()->getRepository("AuthBundle:Person")->findBy([
+            "securityid"=>$securityid
+        ]);
+        return count($data);
 
+    }
     public function registerStudentAction(Request $request)
     {
         $entity = new Person();
@@ -31,12 +38,23 @@ class AuthController extends Controller
         $form->handleRequest($request);
         if($form->isValid())
         {
-            $role = $this->getRole(1);
-            $entity->setRole($role);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-            return $this->redirect("/student/home");
+            echo $entity->getSecurityid();
+            echo $this->getPerson($entity->getSecurityid());
+            if($this->getPerson($entity->getSecurityid()) < 1)
+            {
+                $role = $this->getRole(1);
+                $entity->setRole($role);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+                return $this->redirect("/student/home");
+            }
+            else
+            {
+                echo "Your security id is registered already!";
+            }
+
+            
         }
         return $this->render('AuthBundle:Auth:RegisterStudent.html.twig', ['form' => $form->createView()]);
         
