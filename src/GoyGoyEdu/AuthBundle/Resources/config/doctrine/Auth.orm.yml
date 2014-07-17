@@ -1,0 +1,44 @@
+GoyGoyEdu\AuthBundle\Entity\Auth:
+    type: entity
+    table: Permission
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        
+        is_active:
+            type: boolean
+            nullable: false
+            unsigned: false
+            comment: ''
+        username:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            column: username
+        password:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            column: password
+    OneToOne:
+        role:
+            targetEntity: Person
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Person_Id:
+                    referencedColumnName: Id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
