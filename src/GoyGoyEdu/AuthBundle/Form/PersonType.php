@@ -19,10 +19,10 @@ class PersonType extends AbstractType
             ->add('surname')
             ->add('mothername')
             ->add('fathername')
-            ->add('govermentid')
+            ->add('securityid')
             ->add('mothersecurityid')
             ->add('fathersecurityid')
-            ->add('role')
+            ->add('Register','submit')
         ;
     }
     

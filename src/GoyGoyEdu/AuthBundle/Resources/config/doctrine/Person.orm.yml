@@ -44,12 +44,13 @@ GoyGoyEdu\AuthBundle\Entity\Person:
             fixed: false
             comment: ''
             column: FatherName
-        govermentid:
+        securityid:
             type: integer
             nullable: false
             unsigned: false
             comment: ''
-            column: GovermentId
+            column: Securityid
+            unique: true
         mothersecurityid:
             type: integer
             nullable: true
