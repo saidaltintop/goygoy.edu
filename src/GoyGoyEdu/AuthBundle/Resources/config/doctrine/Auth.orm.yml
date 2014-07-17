@@ -1,6 +1,6 @@
 GoyGoyEdu\AuthBundle\Entity\Auth:
     type: entity
-    table: Permission
+    table: Auth
     id:
         id:
             type: integer
@@ -32,7 +32,7 @@ GoyGoyEdu\AuthBundle\Entity\Auth:
             comment: ''
             column: password
     OneToOne:
-        role:
+        person:
             targetEntity: Person
             cascade: {  }
             mappedBy: null
