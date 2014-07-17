@@ -37,11 +37,6 @@ class Person
     /**
      * @var integer
      */
-    private $govermentid;
-
-    /**
-     * @var integer
-     */
     private $mothersecurityid;
 
     /**
@@ -156,30 +151,6 @@ class Person
     {
         return $this->fathername;
     }
-
-    /**
-     * Set govermentid
-     *
-     * @param integer $govermentid
-     * @return Person
-     */
-    public function setGovermentid($govermentid)
-    {
-        $this->govermentid = $govermentid;
-
-        return $this;
-    }
-
-    /**
-     * Get govermentid
-     *
-     * @return integer 
-     */
-    public function getGovermentid()
-    {
-        return $this->govermentid;
-    }
-
     /**
      * Set mothersecurityid
      *
@@ -247,5 +218,33 @@ class Person
     public function getRole()
     {
         return $this->role;
+    }
+    /**
+     * @var integer
+     */
+    private $securityid;
+
+
+    /**
+     * Set securityid
+     *
+     * @param integer $securityid
+     * @return Person
+     */
+    public function setSecurityid($securityid)
+    {
+        $this->securityid = $securityid;
+
+        return $this;
+    }
+
+    /**
+     * Get securityid
+     *
+     * @return integer 
+     */
+    public function getSecurityid()
+    {
+        return $this->securityid;
     }
 }

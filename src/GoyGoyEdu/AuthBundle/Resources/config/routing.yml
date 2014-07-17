@@ -1,3 +1,6 @@
 auth_homepage:
     path:     /hello/{name}
     defaults: { _controller: AuthBundle:Default:index }
+register_stundet:
+    path: /register/student
+    defaults: { _controller: AuthBundle:Auth:registerStudent }
