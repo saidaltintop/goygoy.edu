@@ -28,6 +28,37 @@ class AuthController extends Controller
         return count($data);
 
     }
+    public function registerStuffAction(Request $request)
+    {
+        $entity = new Person();
+        $form  = $this->createFormBuilder($entity);
+        $type = new PersonType();
+        $type->buildForm($form,[]);
+        $form = $form->getForm();
+        $form->handleRequest($request);
+        if($form->isValid())
+        {
+            echo $entity->getSecurityid();
+            echo $this->getPerson($entity->getSecurityid());
+            if($this->getPerson($entity->getSecurityid()) < 1)
+            {
+                $role = $this->getRole(2);
+                $entity->setRole($role);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+                return $this->redirect("/stuff/home");
+            }
+            else
+            {
+                echo "Your security id is registered already!";
+            }
+
+            
+        }
+        return $this->render('AuthBundle:Auth:RegisterStudent.html.twig', ['form' => $form->createView()]);
+        
+    }
     public function registerStudentAction(Request $request)
     {
         $entity = new Person();
